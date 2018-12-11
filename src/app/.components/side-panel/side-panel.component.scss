@@ -1,0 +1,18 @@
+@import "../../../styles.scss";
+
+.side-panel {
+  float: left;
+  width: $sideBarWidth;
+  height: 100%;
+  background-color: $appBackgroundColor;
+  position: fixed;
+  z-index: 1;
+  border-right-color: $appBorderColor;
+  border-right-style: solid;
+  border-right-width: 1px;
+}
+
+.side-panel a {
+  width: $sideBarWidth;
+  min-width: 1%;
+}

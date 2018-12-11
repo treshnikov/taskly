@@ -1,0 +1,10 @@
+<div class="board-task-holder">
+  <div class="board-task-marker"></div>
+  <div style="margin-left: 20px; padding-top: 5px;">
+    <div class="board-task-title"><a href=#>TD-{{task.id}}</a></div>
+    <div class="board-task-description">
+      <app-editable-text #editableText [text]="task.description">
+      </app-editable-text>
+    </div>
+  </div>
+</div>

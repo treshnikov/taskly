@@ -1,0 +1,36 @@
+<div class="backlog-project-title-holder">
+  <div class="backlog-project-title">
+    <h3>Project - TechnoDoc</h3>
+  </div>
+  <div class="backlog-additional-menu-button">
+    <button mat-button [matMenuTriggerFor]="backlogMenu">...</button>
+    <mat-menu #backlogMenu="matMenu">
+      <button mat-menu-item (click)="onAddNewSprint()">Add a new sprint</button>
+    </mat-menu>
+  </div>
+</div>
+
+<div cdkDropListGroup class="backlog-sprint-holder">
+  <div *ngFor="let sprint of sprints">
+    <div class="backlog-sprint-title-holder">
+      <div class="backlog-sprint-title">
+        <h3>{{sprint.name}}</h3>
+      </div>
+      <div class="backlog-additional-menu-button">
+        <button mat-button (click)=onAddNewTask(sprint)>Add task</button>
+        <button mat-button [matMenuTriggerFor]="sprintMenu">...</button>
+        <mat-menu #sprintMenu="matMenu">
+          <button mat-menu-item disabled=true>Close sprint</button>
+          <button mat-menu-item disabled=true>Move sprint up</button>
+          <button mat-menu-item disabled=true>Move sprint down</button>
+        </mat-menu>
+      </div>
+    </div>
+
+    <div class="sprint-task-box" cdkDropList [cdkDropListData]=sprint.name (cdkDropListDropped)="onTaskDropped($event, sprint)">
+      <app-backlog-task #taskElements cdkDrag *ngFor="let task of sprint.tasks" [task]=task class="backlog-task-box">
+      </app-backlog-task>
+    </div>
+
+  </div>
+</div>

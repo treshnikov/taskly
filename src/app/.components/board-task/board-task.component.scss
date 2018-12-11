@@ -1,0 +1,31 @@
+@import "../../../styles.scss";
+
+.board-task-holder {
+  position: relative;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.board-task-holder:hover {
+  background-color: $appSelectedBackgroundColor;
+}
+
+.board-task-marker {
+  float: left;
+  width: 15px;
+  height: 100%;
+  position: absolute;
+  background-color: aquamarine;
+  border-radius: 3px;
+} 
+
+.board-task-description {
+  width: 246px;
+  min-height: 25px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.board-task-box:last-child {
+  border: none;
+}

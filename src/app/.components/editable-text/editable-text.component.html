@@ -1,0 +1,22 @@
+<div class="editable-text-wrapper">
+  <div 
+  #label
+  class="text-as-label" 
+  [hidden]=isInEditMode 
+  (click)=onTaskDescriptionLabelClick() 
+  >
+    {{text}}
+  </div>
+  <textarea 
+  #input
+  [style.width.px]="taskDescriptionLabelElementWidth"
+  [style.height.px]="taskDescriptionLabelElementHeight"
+  autofocus
+  type="text" [hidden]=!isInEditMode 
+  [(ngModel)]=text
+  (blur)=onTaskDescriptionInputLostFocus()
+  (keydown.enter)=onTaskDescriptionInputLostFocus()
+  (keydown.escape)=onTaskDescriptionInputLostFocus(false)
+  >
+  </textarea>
+</div>

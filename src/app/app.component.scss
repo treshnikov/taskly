@@ -1,0 +1,11 @@
+@import "../styles.scss";
+
+.router-outlet-holder{
+    padding-left: 20px;
+    margin-left: $sideBarWidth;
+    float: left;
+}
+
+.app-container{
+    padding-top: $headerHeight;
+}
