@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ElementRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { BoardTask } from 'src/app/.classes/board-task';
-import { EditableTextComponent } from '../editable-text/editable-text.component';
+import { EditableTextComponent } from '../../.common/editable-text/editable-text.component';
 
 @Component({
   selector: 'app-board-task',

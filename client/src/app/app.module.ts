@@ -16,22 +16,22 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BoardComponent } from './.components/board/board.component';
-import { BoardTaskComponent } from './.components/board-task/board-task.component';
+import { BoardComponent } from './.components/board-page/board/board.component';
+import { BoardTaskComponent } from './.components/board-page/board-task/board-task.component';
 import {MatIconModule} from '@angular/material/icon';
 import { RouterModule, Routes } from '@angular/router';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 
 import {DragDropModule, CdkDropList} from '@angular/cdk/drag-drop';
-import { SettingsComponent } from './.components/settings/settings.component';
-import { HeaderComponent } from './.components/header/header.component';
-import { SidePanelComponent } from './.components/side-panel/side-panel.component';
-import { VersionComponent } from './.components/version/version.component';
-import { BacklogComponent } from './.components/backlog/backlog.component';
-import { HomeComponent } from './.components/home/home.component';
-import { BacklogTaskComponent } from './.components/backlog-task/backlog-task.component';
-import { EditableTextComponent } from './.components/editable-text/editable-text.component';
+import { SettingsComponent } from './.components/admin-page/settings/settings.component';
+import { HeaderComponent } from './.components/home-page/header/header.component';
+import { SidePanelComponent } from './.components/home-page/side-panel/side-panel.component';
+import { VersionComponent } from './.components/home-page/version/version.component';
+import { BacklogComponent } from './.components/backlog-page/backlog/backlog.component';
+import { HomeComponent } from './.components/home-page/home/home.component';
+import { BacklogTaskComponent } from './.components/backlog-page/backlog-task/backlog-task.component';
+import { EditableTextComponent } from './.components/.common/editable-text/editable-text.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },

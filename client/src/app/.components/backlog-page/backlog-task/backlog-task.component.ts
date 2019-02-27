@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { BoardTask } from 'src/app/.classes/board-task';
-import { EditableTextComponent } from '../editable-text/editable-text.component';
+import { EditableTextComponent } from '../../.common/editable-text/editable-text.component';
 
 @Component({
   selector: 'app-backlog-task',

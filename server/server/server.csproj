@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <UserSecretsId>a23f8c9b-ccbf-49f4-9027-8e9776bca944</UserSecretsId>
     <RootNamespace>Taskly</RootNamespace>
     <AssemblyName>Server</AssemblyName>
