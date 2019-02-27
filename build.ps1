@@ -1,10 +1,10 @@
 param (
     [string]$outDir = ".build",
-    [string]$iisSiteName = "taskly"
+    [string]$baseHref = "taskly_prod"
 )
 
 Write-Host "Building app to directory '$outDir'"
-Write-Host "Site name is '$iisSiteName'"
+Write-Host "Site name is '$baseHref'"
 
 # clear output directory
 if(Test-Path -Path $outDir){ 
@@ -24,7 +24,7 @@ if (!$?){
 #build client
 cd client
 npm install
-ng build --base-href /$iisSiteName/ --output-path ..\$outDir\wwwroot
+ng build --base-href /$baseHref/ --output-path ..\$outDir\wwwroot
 if (!$?){ 
     Write-Host "An error occurred while building the client app. For more information see logs."
     exit $LASTEXITCODE 
