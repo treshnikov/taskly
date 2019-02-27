@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "debug": "ng build --base-href /taskly/ --output-path ../server/server/wwwroot",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
