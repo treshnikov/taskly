@@ -12,6 +12,7 @@ using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
 using Taskly.Infrastructure;
+using Taskly.Installers;
 
 namespace Taskly
 {

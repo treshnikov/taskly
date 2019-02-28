@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Taskly.CQRS.Abstractions.Commands;
-using Taskly.CQRS.Abstractions.Queries;
-using Taskly.Models.Jira;
-using Taskly.Services.JIra.Queries;
+using Taskly.App.JIra.Commands;
+using Taskly.App.JIra.Models;
+using Taskly.App.JIra.Queries;
+using Taskly.Infrastructure.CQRS.Abstractions.Commands;
+using Taskly.Infrastructure.CQRS.Abstractions.Queries;
 
 namespace Taskly.Controllers
 {
@@ -30,5 +31,18 @@ namespace Taskly.Controllers
                     "Qwe12345678",
                     "jira7"));
         }
+
+        [HttpGet]
+        [Route("reload")]
+        public void Reload()
+        {
+            _commandsDispatcher.Execute(new SaveJiraIssuesFormMsSqlCommandCriterion(
+                @"AO156403TPV\SQLEXPRESS",
+                "sa",
+                "Qwe12345678",
+                "jira7"));
+        }
+
     }
+
 }
