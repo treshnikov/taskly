@@ -2,7 +2,9 @@ import {
   Component,
   OnInit,
   ViewChildren,
-  QueryList
+  QueryList,
+  ChangeDetectorRef,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { Sprint } from 'src/app/.classes/sprint';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
@@ -13,11 +15,12 @@ import {IssuesService} from '../../../.services/issueService/IssuesService'
 @Component({
   selector: 'app-backlog',
   templateUrl: './backlog.component.html',
-  styleUrls: ['./backlog.component.scss']
+  styleUrls: ['./backlog.component.scss'],
+//  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BacklogComponent implements OnInit {
 
-  constructor(private issueService: IssuesService) { }
+  constructor(private issueService: IssuesService, private cd: ChangeDetectorRef) { }
 
   sprints: Sprint[];
   issues: BoardTask[];
@@ -94,6 +97,8 @@ export class BacklogComponent implements OnInit {
   }
 
   onTaskDropped(event: CdkDragDrop<string[]>) {
+    console.log('onTaskDropped');
+
     if (event.previousContainer.data === event.container.data) {
       let sprint = this.sprints.find(i => i.name == event.container.data.toString());
       moveItemInArray(sprint.tasks, event.previousIndex, event.currentIndex);

@@ -19,7 +19,7 @@ import { BoardColumn } from 'src/app/.classes/board-column';
 import { BoardTask } from 'src/app/.classes/board-task';
 import { BacklogTaskComponent } from '../../backlog-page/backlog-task/backlog-task.component';
 import { BoardTaskComponent } from '../board-task/board-task.component';
-
+import {IssuesService} from '../../../.services/issueService/IssuesService'
 
 @Component({
   selector: 'app-board',
@@ -28,15 +28,26 @@ import { BoardTaskComponent } from '../board-task/board-task.component';
 })
 export class BoardComponent implements OnInit {
 
-  constructor() {}
-
   board: Board;
+  issues: BoardTask[];
+
+  constructor(private issueService: IssuesService) { }
+
+  loadBoardTasks(){
+    this.issueService.getAllIssues().subscribe(issues => {
+      this.issues = issues;
+      console.log('issues loaded');
+      this.board.columns[0].tasks = issues;
+    }); 
+  }
+
 
   @ViewChildren('taskElements') 
   taskElements: QueryList<BoardTaskComponent>;
 
   ngOnInit() {
     this.board = this.loadBoard();
+    this.loadBoardTasks();
   }
 
   private loadBoard(): Board {
