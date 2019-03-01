@@ -20,6 +20,7 @@ import { BoardTask } from 'src/app/.classes/board-task';
 import { BacklogTaskComponent } from '../../backlog-page/backlog-task/backlog-task.component';
 import { BoardTaskComponent } from '../board-task/board-task.component';
 
+
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',

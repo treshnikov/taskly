@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Taskly.App.JIra.Models;
 using Taskly.App.JIra.Queries;
+using Taskly.App.TasklyIssues.Models;
 using Taskly.App.TasklyIssues.Queries;
 using Taskly.Domain;
 using Taskly.Infrastructure.CQRS.Abstractions.Commands;
@@ -23,7 +24,7 @@ namespace Taskly.Controllers
 
         [HttpGet]
         [Route("get")]
-        public TasklyIssue[] Get()
+        public BoardTask[] Get()
         {
             return _queriesDispatcher.Execute(new GetTasklyIssuesQueryArg());
         }

@@ -8,6 +8,7 @@ import { Sprint } from 'src/app/.classes/sprint';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { BoardTask } from 'src/app/.classes/board-task';
 import { BacklogTaskComponent } from '../backlog-task/backlog-task.component';
+import {IssuesService} from '../../../.services/issueService/IssuesService'
 
 @Component({
   selector: 'app-backlog',
@@ -16,15 +17,25 @@ import { BacklogTaskComponent } from '../backlog-task/backlog-task.component';
 })
 export class BacklogComponent implements OnInit {
 
-  constructor() { }
+  constructor(private issueService: IssuesService) { }
 
   sprints: Sprint[];
+  issues: BoardTask[];
 
   @ViewChildren('taskElements')
   taskElements: QueryList<BacklogTaskComponent>;
 
   ngOnInit() {
     this.sprints = this.loadSprints();
+    this.loadBoardTasks();
+  }
+
+  loadBoardTasks(){
+    this.issueService.getAllIssues().subscribe(issues => {
+      this.issues = issues;
+      console.log('issues loaded');
+      this.sprints[this.sprints.length - 1].tasks = issues;
+    });
   }
 
   loadSprints(): Sprint[] {

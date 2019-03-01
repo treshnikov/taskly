@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <Folder Include="TasklyIssues\Commands\" />
-    <Folder Include="TasklyIssues\Models\" />
     <Folder Include="TasklyIssues\Queries\" />
   </ItemGroup>
 
