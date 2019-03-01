@@ -5,14 +5,14 @@ using Taskly.Infrastructure.CQRS.Abstractions.Queries;
 
 namespace Taskly.App.JIra.Queries
 {
-    public class GetJiraIssuesFromMsSqlCriterion : ICriterion<JiraIssue[]>
+    public class GetJiraIssuesFromMsSqlQueryArg : IQueryArg<JiraIssue[]>
     {
         public string DataSource { get; }
         public string UserID { get; }
         public string Password { get; }
         public string InitialCatalog { get; }
 
-        public GetJiraIssuesFromMsSqlCriterion(string dataSource, string userID, string password, string initialCatalog)
+        public GetJiraIssuesFromMsSqlQueryArg(string dataSource, string userID, string password, string initialCatalog)
         {
             DataSource = dataSource;
             UserID = userID;
@@ -21,18 +21,18 @@ namespace Taskly.App.JIra.Queries
         }
     }
 
-    public class GetJiraIssuesFromMsSqlQuery : IQuery<GetJiraIssuesFromMsSqlCriterion, JiraIssue[]>
+    public class GetJiraIssuesFromMsSqlQuery : IQuery<GetJiraIssuesFromMsSqlQueryArg, JiraIssue[]>
     {
-        public JiraIssue[] Ask(GetJiraIssuesFromMsSqlCriterion criterion)
+        public JiraIssue[] Ask(GetJiraIssuesFromMsSqlQueryArg queryArg)
         {
             var res = new List<JiraIssue>();
 
             var builder = new SqlConnectionStringBuilder
             {
-                DataSource = criterion.DataSource,
-                UserID = criterion.UserID,
-                Password = criterion.Password,
-                InitialCatalog = criterion.InitialCatalog
+                DataSource = queryArg.DataSource,
+                UserID = queryArg.UserID,
+                Password = queryArg.Password,
+                InitialCatalog = queryArg.InitialCatalog
             };
 
             using (var connection = new SqlConnection(builder.ConnectionString))

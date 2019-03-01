@@ -1,6 +1,6 @@
 ﻿namespace Taskly.Infrastructure.CQRS.Abstractions.Queries
 {
-    public interface ICriterion<out TResult>
+    public interface IQueryArg<out TResult>
     {
     }
 }

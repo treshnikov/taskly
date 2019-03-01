@@ -16,12 +16,12 @@ namespace Taskly.Infrastructure.CQRS.Implementations.Commands.CommandsFactory
             _componentContext = componentContext;
         }
 
-        public ICommand<TCommandContext> CreateCommand<TCommandContext>() where TCommandContext : ICommandContext
+        public ICommand<TCommandContext> CreateCommand<TCommandContext>() where TCommandContext : ICommandArg
         {
             return _componentContext.Resolve<ICommand<TCommandContext>>();
         }
 
-        public IAsyncCommand<TCommandContext> CreateAsyncCommand<TCommandContext>() where TCommandContext : ICommandContext
+        public IAsyncCommand<TCommandContext> CreateAsyncCommand<TCommandContext>() where TCommandContext : ICommandArg
         {
             return _componentContext.Resolve<IAsyncCommand<TCommandContext>>();
         }

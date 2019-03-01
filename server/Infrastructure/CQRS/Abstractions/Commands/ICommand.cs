@@ -1,7 +1,7 @@
 ﻿namespace Taskly.Infrastructure.CQRS.Abstractions.Commands
 {
-    public interface ICommand<in TCommandContext> where TCommandContext : ICommandContext
+    public interface ICommand<in TCommandArg> where TCommandArg : ICommandArg
     {
-        void Execute(TCommandContext commandContext);
+        void Execute(TCommandArg commandContext);
     }
 }

@@ -21,21 +21,21 @@ namespace Taskly.Infrastructure.CQRS.Implementations.Queries
 
             _queriesFactory = queriesFactory;
 
-            Expression<Func<IQueriesFactory, IQuery<ICriterion<object>, object>>> fakeCreateCall = x => x.Create<ICriterion<object>, object>();
+            Expression<Func<IQueriesFactory, IQuery<IQueryArg<object>, object>>> fakeCreateCall = x => x.Create<IQueryArg<object>, object>();
             _createQueryGenericDefinition = ((MethodCallExpression)fakeCreateCall.Body).Method.GetGenericMethodDefinition();
 
-            Expression<Func<IQuery<ICriterion<object>, object>, object>> fakeAskCall = x => x.Ask(null);
+            Expression<Func<IQuery<IQueryArg<object>, object>, object>> fakeAskCall = x => x.Ask(null);
             _askMethodName = ((MethodCallExpression)fakeAskCall.Body).Method.Name;
         }
 
-        public TResult Execute<TResult>(ICriterion<TResult> criterion)
+        public TResult Execute<TResult>(IQueryArg<TResult> queryArg)
         {
-            var query = _createQueryGenericDefinition.MakeGenericMethod(criterion.GetType(), typeof(TResult)).Invoke(_queriesFactory, null);
-            var askMethodDefinition = query.GetType().GetRuntimeMethod(_askMethodName, new[] { criterion.GetType() });
+            var query = _createQueryGenericDefinition.MakeGenericMethod(queryArg.GetType(), typeof(TResult)).Invoke(_queriesFactory, null);
+            var askMethodDefinition = query.GetType().GetRuntimeMethod(_askMethodName, new[] { queryArg.GetType() });
 
             try
             {
-                return (TResult)askMethodDefinition.Invoke(query, new object[] { criterion });
+                return (TResult)askMethodDefinition.Invoke(query, new object[] { queryArg });
             }
             catch (TargetInvocationException ex)
             {

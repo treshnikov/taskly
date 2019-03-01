@@ -4,8 +4,8 @@ namespace Taskly.Infrastructure.CQRS.Abstractions.Commands
 {
     public interface ICommandsDispatcher
     {
-        void Execute<TCommandContext>(TCommandContext commandContext) where TCommandContext : ICommandContext;
+        void Execute<TCommandContext>(TCommandContext commandContext) where TCommandContext : ICommandArg;
 
-        Task ExecuteAsync<TCommandContext>(TCommandContext commandContext) where TCommandContext : ICommandContext;
+        Task ExecuteAsync<TCommandArg>(TCommandArg commandContext) where TCommandArg : ICommandArg;
     }
 }

@@ -25,7 +25,7 @@ namespace Taskly.Controllers
         public JiraIssue[] Get()
         {
             return _queriesDispatcher.Execute(
-                new GetJiraIssuesFromMsSqlCriterion(
+                new GetJiraIssuesFromMsSqlQueryArg(
                     @"AO156403TPV\SQLEXPRESS",
                     "sa",
                     "Qwe12345678",
@@ -36,7 +36,7 @@ namespace Taskly.Controllers
         [Route("reload")]
         public void Reload()
         {
-            _commandsDispatcher.Execute(new SaveJiraIssuesFormMsSqlCommandCriterion(
+            _commandsDispatcher.Execute(new SaveJiraIssuesFormMsSqlCommandArg(
                 @"AO156403TPV\SQLEXPRESS",
                 "sa",
                 "Qwe12345678",

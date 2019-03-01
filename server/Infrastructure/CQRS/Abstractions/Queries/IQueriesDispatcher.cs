@@ -2,6 +2,6 @@
 {
     public interface IQueriesDispatcher
     {
-        TResult Execute<TResult>(ICriterion<TResult> criterion);
+        TResult Execute<TResult>(IQueryArg<TResult> queryArg);
     }
 }

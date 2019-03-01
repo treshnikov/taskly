@@ -16,9 +16,9 @@ namespace Taskly.Infrastructure.CQRS.Implementations.Queries.QueriesFactory
             _componentContext = componentContext;
         }
 
-        public IQuery<TCriterion, TResult> Create<TCriterion, TResult>() where TCriterion : ICriterion<TResult>
+        public IQuery<TQueryArg, TResult> Create<TQueryArg, TResult>() where TQueryArg : IQueryArg<TResult>
         {
-            return _componentContext.Resolve<IQuery<TCriterion, TResult>>();
+            return _componentContext.Resolve<IQuery<TQueryArg, TResult>>();
         }
     }
 }

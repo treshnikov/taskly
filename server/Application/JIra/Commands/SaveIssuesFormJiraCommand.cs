@@ -6,14 +6,14 @@ using Taskly.Infrastructure.CQRS.Abstractions.Commands;
 
 namespace Taskly.App.JIra.Commands
 {
-    public class SaveJiraIssuesFormMsSqlCommandCriterion : ICommandContext
+    public class SaveJiraIssuesFormMsSqlCommandArg : ICommandArg
     {
         public string DataSource { get; }
         public string UserID { get; }
         public string Password { get; }
         public string InitialCatalog { get; }
 
-        public SaveJiraIssuesFormMsSqlCommandCriterion(string dataSource, string userId, string password,
+        public SaveJiraIssuesFormMsSqlCommandArg(string dataSource, string userId, string password,
             string initialCatalog)
         {
             DataSource = dataSource;
@@ -23,20 +23,20 @@ namespace Taskly.App.JIra.Commands
         }
     }
 
-    public class SaveIJirassuesFormMsSqlCommand : ICommand<SaveJiraIssuesFormMsSqlCommandCriterion>
+    public class SaveJirassuesFormMsSqlCommand : ICommand<SaveJiraIssuesFormMsSqlCommandArg>
     {
         private readonly GetJiraIssuesFromMsSqlQuery _jiraIssuesQuery = new GetJiraIssuesFromMsSqlQuery();
 
-        public void Execute(SaveJiraIssuesFormMsSqlCommandCriterion commandContext)
+        public void Execute(SaveJiraIssuesFormMsSqlCommandArg commandContext)
         {
-            var jiraIssues = _jiraIssuesQuery.Ask(new GetJiraIssuesFromMsSqlCriterion(
+            var jiraIssues = _jiraIssuesQuery.Ask(new GetJiraIssuesFromMsSqlQueryArg(
                 commandContext.DataSource,
                 commandContext.UserID,
                 commandContext.Password,
                 commandContext.InitialCatalog));
 
-            var tasklyIssues = jiraIssues.Select(i => new Issue(i.Id, i.Summary, i.Description, i.ProjectId, i.IssueNum));
-            JsonRepository.Set<Issue>(tasklyIssues);
+            var tasklyIssues = jiraIssues.Select(i => new TasklyIssue(i.Id, i.Summary, i.Description, i.ProjectId, i.IssueNum));
+            JsonRepository.Set<TasklyIssue>(tasklyIssues);
         }
     }
 }
