@@ -1,8 +1,9 @@
 @import "../../../../styles.scss";
 
 .backlog-task-holder {
-  position: relative;
-  width: 100%;
+  display: inline-grid; 
+  width: 100%; 
+  grid-template-columns: 15px 80px auto;
 }
 
 .backlog-task-holder:hover {
@@ -10,23 +11,16 @@
 }
 
 .backlog-task-marker {
-  float: left;
-  width: 15px;
   border-radius: 3px;
   height: 100%;
-  position: absolute;
   background-color: aquamarine;
 }
 
 .backlog-task-title {
-  float: left;
-  margin-left: 20px;
-  max-width: 80px;
+  margin-left: 10px;
   padding: 3px 3px 3px 0px
 }
 
 .backlog-task-description-holder {
-  float: left;
-  margin-left: 0px;
-  width: calc(100% - 70px);
+  margin-left: 10px;
 }

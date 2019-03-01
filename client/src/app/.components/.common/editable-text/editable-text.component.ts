@@ -34,6 +34,8 @@ export class EditableTextComponent implements OnInit {
     this.isInEditMode = !this.isInEditMode;
     this.oldTaskDescription = this.text;
 
+    //console.log('set width from ' + this.taskDescriptionLabelElementWidth + ' to ' +this.taskDescriptionLabelElement.nativeElement.offsetWidth);
+
     this.taskDescriptionLabelElementWidth = this.taskDescriptionLabelElement.nativeElement.offsetWidth;
     this.taskDescriptionLabelElementHeight = this.taskDescriptionLabelElement.nativeElement.offsetHeight;
 

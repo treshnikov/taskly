@@ -67,28 +67,7 @@ export class BacklogComponent implements OnInit {
     },
       {
         name: "Backlog",
-        tasks: [{
-          id: 4,
-          description: 'Task #4',
-          author: 'Author 1',
-          estimate: 5,
-          assigne: 'User 1'
-        },
-        {
-          id: 5,
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur gravida, risus pulvinar sagittis tristique, libero ex varius lectus, nec dignissim neque quam et augue.',
-          author: 'Author 1',
-          estimate: 2,
-          assigne: 'User 1'
-        },
-        {
-          id: 6,
-          description: 'Task #6',
-          author: 'Author 1',
-          estimate: 3,
-          assigne: 'User 2'
-        },
-        ]
+        tasks: []
       });
     return res;
   }

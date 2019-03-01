@@ -21,7 +21,7 @@ namespace Taskly.App.TasklyIssues.Queries
                 description = i.Summary,
                 estimate = 0,
                 id = i.Id
-            }).TakeLast(100).ToArray();
+            }).TakeLast(1000).ToArray();
         }
     }
 }
