@@ -50,10 +50,10 @@ namespace Taskly
             });
 
             services
-                .Configure<IISOptions>(options =>
-                {
-                    options.ForwardClientCertificate = true;
-                })
+                //.Configure<IISOptions>(options =>
+                //{
+                //    options.ForwardClientCertificate = true;
+                //})
                 .AddCors()
                 .AddMvc()
                 .AddJsonOptions(json =>

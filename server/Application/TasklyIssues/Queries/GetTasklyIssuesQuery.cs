@@ -1,4 +1,6 @@
-﻿using Taskly.Domain;
+﻿using System.Linq;
+using Taskly.Dal;
+using Taskly.Domain;
 using Taskly.Infrastructure.CQRS.Abstractions.Queries;
 
 namespace Taskly.App.TasklyIssues.Queries
@@ -11,7 +13,7 @@ namespace Taskly.App.TasklyIssues.Queries
     {
         public TasklyIssue[] Ask(GetTasklyIssuesQueryArg queryArg)
         {
-            throw new System.NotImplementedException();
+            return JsonRepository.Get<TasklyIssue>().ToArray();
         }
     }
 }
