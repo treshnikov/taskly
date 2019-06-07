@@ -18,7 +18,7 @@ export class BacklogTaskComponent implements OnInit {
   @Input()
   task: BoardTask;
 
-  @ViewChild("editableText")
+  @ViewChild("editableText", { static: true })
   taskDescriptionComponent: EditableTextComponent;
 }
 
