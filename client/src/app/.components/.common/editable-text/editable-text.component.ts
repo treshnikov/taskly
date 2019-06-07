@@ -18,10 +18,10 @@ export class EditableTextComponent implements OnInit {
 
   isInEditMode: Boolean = false;
 
-  @ViewChild('label')
+  @ViewChild('label', { static: true })
   taskDescriptionLabelElement: ElementRef;
 
-  @ViewChild('input')
+  @ViewChild('input', { static: true })
   taskDescriptionInputElement: ElementRef;
 
   taskDescriptionLabelElementWidth:number;

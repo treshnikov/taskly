@@ -17,6 +17,6 @@ export class BoardTaskComponent implements OnInit {
   @Input()
   task: BoardTask;
 
-  @ViewChild("editableText")
+  @ViewChild("editableText", { static: true })
   taskDescriptionComponent: EditableTextComponent;
 }
